@@ -78,7 +78,7 @@ func (m *mailgunImpl) GetDomains(limit, skip int) (int, []Domain, error) {
 	r.SetBasicAuth(basicAuthUser, m.ApiKey())
 
 	var envelope domainsEnvelope
-	err := r.GetResponseFromJSON(&envelope)
+	_, err := r.GetResponseFromJSON(&envelope)
 	if err != nil {
 		return -1, nil, err
 	}
@@ -90,7 +90,7 @@ func (m *mailgunImpl) GetSingleDomain(domain string) (Domain, []DNSRecord, []DNS
 	r := simplehttp.NewHTTPRequest(generatePublicApiUrl(domainsEndpoint) + "/" + domain)
 	r.SetBasicAuth(basicAuthUser, m.ApiKey())
 	var envelope singleDomainEnvelope
-	err := r.GetResponseFromJSON(&envelope)
+	_, err := r.GetResponseFromJSON(&envelope)
 	if err != nil {
 		return Domain{}, nil, nil, err
 	}

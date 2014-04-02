@@ -46,7 +46,7 @@ func (m *mailgunImpl) GetBounces(limit, skip int) (int, []Bounce, error) {
 	r.SetBasicAuth(basicAuthUser, m.ApiKey())
 
 	var response bounceEnvelope
-	err := r.GetResponseFromJSON(&response)
+	_, err := r.GetResponseFromJSON(&response)
 	if err != nil {
 		return -1, nil, err
 	}
@@ -61,7 +61,7 @@ func (m *mailgunImpl) GetSingleBounce(address string) (Bounce, error) {
 	r.SetBasicAuth(basicAuthUser, m.ApiKey())
 
 	var response singleBounceEnvelope
-	err := r.GetResponseFromJSON(&response)
+	_, err := r.GetResponseFromJSON(&response)
 	if err != nil {
 		return Bounce{}, err
 	}

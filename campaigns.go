@@ -28,7 +28,7 @@ func (m *mailgunImpl) GetCampaigns() (int, []Campaign, error) {
 	r.SetBasicAuth(basicAuthUser, m.ApiKey())
 
 	var envelope campaignsEnvelope
-	err := r.GetResponseFromJSON(&envelope)
+	_, err := r.GetResponseFromJSON(&envelope)
 	if err != nil {
 		return -1, nil, err
 	}

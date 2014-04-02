@@ -209,7 +209,7 @@ func (m *mailgunImpl) Send(message *Message) (mes string, id string, err error) 
 		r.SetBasicAuth(basicAuthUser, m.ApiKey())
 
 		var response sendMessageResponse
-		err = r.PostResponseFromJSON(payload, &response)
+		_, err = r.PostResponseFromJSON(payload, &response)
 		if err == nil {
 			mes = response.Message
 			id = response.Id

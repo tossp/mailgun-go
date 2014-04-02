@@ -42,7 +42,7 @@ func (m *mailgunImpl) GetStats(limit int, skip int, startDate *time.Time, event 
 	r.SetBasicAuth(basicAuthUser, m.ApiKey())
 
 	var res statsEnvelope
-	err := r.GetResponseFromJSON(&res)
+	_, err := r.GetResponseFromJSON(&res)
 	if err != nil {
 		return -1, nil, err
 	} else {

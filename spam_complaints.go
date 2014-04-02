@@ -39,7 +39,7 @@ func (m *mailgunImpl) GetComplaints(limit, skip int) (int, []Complaint, error) {
 	}
 
 	var envelope complaintsEnvelope
-	err := r.GetResponseFromJSON(&envelope)
+	_, err := r.GetResponseFromJSON(&envelope)
 	if err != nil {
 		return -1, nil, err
 	}
@@ -53,7 +53,7 @@ func (m *mailgunImpl) GetSingleComplaint(address string) (Complaint, error) {
 	r.SetBasicAuth(basicAuthUser, m.ApiKey())
 
 	var c Complaint
-	err := r.GetResponseFromJSON(&c)
+	_, err := r.GetResponseFromJSON(&c)
 	if err != nil {
 		return Complaint{}, err
 	}
