@@ -497,7 +497,7 @@ func (m *MailgunImpl) Send(message *Message) (mes string, id string, err error) 
 		        
 		if message.readerInlines != nil {
 			for _, readerAttachment := range message.readerInlines {
-				payload.AddReadCloser("inline", readerAttachment.Filename, readerAttachment.ReadCloser)
+				payload.addReadCloser("inline", readerAttachment.Filename, readerAttachment.ReadCloser)
 			}
 		}
 
